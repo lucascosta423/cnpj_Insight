@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<header th:fragment="header" class="bg-dark text-white p-3 text-center rounded">
+
+  <div class="logo">
+    <img class="logo-img" th:src="@{/images/logo.png}" alt="">
+  </div>
+  <div class="titulo text-white">Ultra Insights</div>
+  <div>
+    <!-- Botão "Voltar" visível se não estiver na home -->
+    <a th:if="${uri != '/'}" href="/" class="btn btn-outline-success btn-sm text-white">
+      <i class="bi bi-house"></i> Voltar
+    </a>
+
+    <!-- Botão "Baixar Arquivos" visível se não estiver na página de download -->
+    <a th:if="${uri != '/download'}" href="/download" class="btn btn-outline-success btn-sm text-white">
+      <i class="bi bi-cloud-arrow-down"></i> Baixar Arquivos
+    </a>
+  </div>
+</header>
+</body>
+</html>
