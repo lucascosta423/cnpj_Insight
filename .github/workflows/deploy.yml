@@ -68,7 +68,6 @@ jobs:
           SPRING_DATABASE_SCHEMA=${{ secrets.SPRING_DATABASE_SCHEMA }}
           SPRING_PROFILES_ACTIVE=docker
           SERVER_PORT=8080
-          JAVA_OPTS=\"-Xmx1g -Xms512m -XX:+UseG1GC -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0\"
           EOF
           "
 
