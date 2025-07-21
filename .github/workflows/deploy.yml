@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: runner_cnpjInsight
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repo
