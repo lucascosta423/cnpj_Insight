@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Aplicação CNPJInsight
+  cnpjinsight-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cnpjinsight-app
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./exports:/app/exports
+    networks:
+      - cnpjinsight-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+networks:
+  cnpjinsight-network:
+    driver: bridge
