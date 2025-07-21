@@ -28,6 +28,10 @@ RUN mkdir -p /app/exports && chown -R cnpjinsight:cnpjinsight /app
 
 COPY --from=builder /app/target/*.jar app.jar
 
+# Copia o script de start
+COPY start.sh .
+RUN chmod +x start.sh
+
 USER cnpjinsight
 
 EXPOSE 8080
@@ -37,5 +41,4 @@ ENV JAVA_OPTS="-Xmx1g -Xms512m -XX:+UseG1GC -XX:+UseContainerSupport -XX:MaxRAMP
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:8080/actuator/health || exit 1
 
-# Forma mais segura de executar
-ENTRYPOINT ["sh", "-c", "exec java $JAVA_OPTS -jar app.jar"]
+ENTRYPOINT ["./start.sh"]
