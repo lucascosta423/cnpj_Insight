@@ -33,17 +33,17 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
             cat > ~/deploy/cnpj_Insight.env <<EOF
-          SPRING_DATABASE_HOST=${{ secrets.SPRING_DATABASE_HOST }}
-          SPRING_DATABASE_PORT=${{ secrets.SPRING_DATABASE_PORT }}
-          SPRING_DATABASE_NAME=${{ secrets.SPRING_DATABASE_NAME }}
-          SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
-          SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
-          SPRING_DATABASE_SCHEMA=${{ secrets.SPRING_DATABASE_SCHEMA }}
-          SPRING_PROFILES_ACTIVE=docker
-          SERVER_PORT=8080
-          JAVA_OPTS=\"-Xmx1g -Xms512m -XX:+UseG1GC -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0\"
-          EOF
-          "
+            SPRING_DATABASE_HOST=${{ secrets.SPRING_DATABASE_HOST }}
+            SPRING_DATABASE_PORT=${{ secrets.SPRING_DATABASE_PORT }}
+            SPRING_DATABASE_NAME=${{ secrets.SPRING_DATABASE_NAME }}
+            SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
+            SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
+            SPRING_DATABASE_SCHEMA=${{ secrets.SPRING_DATABASE_SCHEMA }}
+            SPRING_PROFILES_ACTIVE=docker
+            SERVER_PORT=8080
+            JAVA_OPTS=\"-Xmx1g -Xms512m -XX:+UseG1GC -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0\"
+            EOF
+            "
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
