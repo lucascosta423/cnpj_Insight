@@ -30,6 +30,7 @@ build/
 !**/src/test/**/build/
 
 exports
+.github
 
 ### VS Code ###
 .vscode/
